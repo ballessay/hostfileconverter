@@ -4,7 +4,7 @@ Converts and combines hosts files from different sources to one file. My use cas
 
 ## Usage
 
-Download files in hosts format from different sources (for example see: DownloadHostFiles.sh)
+Download files in hosts format from different sources (for example see: DownloadHostsFiles.sh)
 
-`./HostFileConverter.py -h`
+`./HostsFileConverter.py -h`
 

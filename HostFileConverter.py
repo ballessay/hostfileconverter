@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+
 __author__ = 'ballessay'
 
 from glob import glob
@@ -79,7 +81,7 @@ class HostsConverter:
         output some statistics at the end
         :param file_paths: list with paths of files to parse
         """
-        print 'working dir: {0}'.format(self._working_dir)
+        print('working dir: {0}'.format(self._working_dir))
 
         file_paths = glob(os.path.join(self._working_dir, '*.hosts'))
         for filename in file_paths:
@@ -88,7 +90,7 @@ class HostsConverter:
         self._write_file()
 
         if self._print_stats:
-            print self._extract_msg(self._line_count, len(self._domains))
+            print(self._extract_msg(self._line_count, len(self._domains)))
 
     def _write_file(self):
         """
@@ -124,8 +126,8 @@ class HostsConverter:
                             self._domains.add(url)
 
             if self._print_stats:
-                print self._file_info(file_path, line_count, relevant_lines,
-                                      url_count, added_urls)
+                print(self._file_info(file_path, line_count, relevant_lines,
+                                      url_count, added_urls))
 
             self._line_count += line_count
             input_file.close()
@@ -133,15 +135,15 @@ class HostsConverter:
 
 def usage():
     # TODO: print nice formatted usage information
-    print 'Usage: {0}'.format(os.path.basename(sys.argv[0]))
-    print 'Options:'
-    print '-h, --help             shows this information'
-    print '-o, --output filename  sets the name of the output file. default: '\
-          'hosts_out'
-    print '-p, --path             working dir. default: cwd/pwd'
-    print '-f, --format           output file format. possible: hosts, dnsmasq, unbound'\
-          ' default: dnsmasq'
-    print '-s, --stats            shows some file statistics'
+    print('Usage: {0}'.format(os.path.basename(sys.argv[0])))
+    print('Options:')
+    print('-h, --help             shows this information')
+    print('-o, --output filename  sets the name of the output file. default: '\
+          'hosts_out')
+    print('-p, --path             working dir. default: cwd/pwd')
+    print('-f, --format           output file format. possible: hosts, dnsmasq, unbound'\
+          ' default: dnsmasq')
+    print('-s, --stats            shows some file statistics')
 
 
 def main(argv):
@@ -158,7 +160,7 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv, _options_short, _options_long)
     except getopt.GetoptError as err:
-        print err.message
+        print(err.message)
         usage()
         sys.exit(2)
 

@@ -31,6 +31,7 @@ _url_filter = [
 # output formats
 _dnsmasq_format = 'address=/{0}/127.0.0.1'.format
 _hosts_file_format = '127.0.0.1 {0}'.format
+_unbound_format = 'local-zone: "{0}" redirect\nlocal-data: "{0} A 127.0.0.1"'.format
 
 def relevant(line):
     """
@@ -138,7 +139,7 @@ def usage():
     print '-o, --output filename  sets the name of the output file. default: '\
           'hosts_out'
     print '-p, --path             working dir. default: cwd/pwd'
-    print '-f, --format           output file format. possible: hosts, dnsmasq'\
+    print '-f, --format           output file format. possible: hosts, dnsmasq, unbound'\
           ' default: dnsmasq'
     print '-s, --stats            shows some file statistics'
 
@@ -174,7 +175,7 @@ def main(argv):
         elif opt in ('-s', '--stats'):
             print_stats = True
 
-    formats = {'hosts': _hosts_file_format, 'dnsmasq': _dnsmasq_format}
+    formats = {'hosts': _hosts_file_format, 'dnsmasq': _dnsmasq_format, 'unbound': _unbound_format}
     if format_type in formats.keys():
         output_format = formats[format_type]
     else:

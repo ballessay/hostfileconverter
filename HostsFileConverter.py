@@ -19,7 +19,7 @@ import getopt
 # http://pgl.yoyo.org/adservers/serverlist.php?hostformat=dnsmasq&showintro=0&mimetype=plaintext
 # http://someonewhocares.org/hosts/hosts
 #
-# manual download helper script: DownloadHostFiles.sh
+# manual download helper script: DownloadHostsFiles.sh
 
 
 # Some input hosts files are a bit too restrictive. So the entries in

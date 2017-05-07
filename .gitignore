@@ -1,2 +1,7 @@
+# input/output files
 *.hosts
 *.out
+
+# pycharm
+.idea/
+

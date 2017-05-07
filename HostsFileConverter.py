@@ -9,7 +9,6 @@ import os
 import sys
 import getopt
 
-
 ################################################################################
 # sources must be manually downloaded cause automation is forbidden by most
 # of the services
@@ -34,6 +33,7 @@ _url_filter = [
 _dnsmasq_format = 'address=/{0}/127.0.0.1'.format
 _hosts_file_format = '127.0.0.1 {0}'.format
 _unbound_format = 'local-zone: "{0}" redirect\nlocal-data: "{0} A 127.0.0.1"'.format
+
 
 def relevant(line):
     """
@@ -60,11 +60,11 @@ def url_part(parts):
 
 class HostsConverter:
     # info message per file
-    _file_info = 'file: {0} has {1} lines, relevant: {2} split: {3} '\
+    _file_info = 'file: {0} has {1} lines, relevant: {2} split: {3} ' \
                  'unfiltered lines {4}'.format
 
     # message string to display at the end of extraction
-    _extract_msg = 'overall line count {0}\nunique unfiltered '\
+    _extract_msg = 'overall line count {0}\nunique unfiltered ' \
                    'domains: {1}'.format
 
     def __init__(self, path, output_format, output_file, print_stats):
@@ -79,7 +79,6 @@ class HostsConverter:
         """
         Convert/Merge all files in file_paths to one big host/dnsmasq file and
         output some statistics at the end
-        :param file_paths: list with paths of files to parse
         """
         print('working dir: {0}'.format(self._working_dir))
 
@@ -95,7 +94,6 @@ class HostsConverter:
     def _write_file(self):
         """
         Writes the collected DNS entries to an output file
-        :param filename: of the output file
         """
         file_path = os.path.join(self._working_dir, self._output_file)
         with open(file_path, 'w') as output_file:
@@ -138,16 +136,15 @@ def usage():
     print('Usage: {0}'.format(os.path.basename(sys.argv[0])))
     print('Options:')
     print('-h, --help             shows this information')
-    print('-o, --output filename  sets the name of the output file. default: '\
+    print('-o, --output filename  sets the name of the output file. default: ' \
           'hosts_out')
     print('-p, --path             working dir. default: cwd/pwd')
-    print('-f, --format           output file format. possible: hosts, dnsmasq, unbound'\
+    print('-f, --format           output file format. possible: hosts, dnsmasq, unbound' \
           ' default: dnsmasq')
     print('-s, --stats            shows some file statistics')
 
 
 def main(argv):
-
     path = os.getcwd()
     format_type = 'dnsmasq'
     output_format = _dnsmasq_format
@@ -190,4 +187,3 @@ def main(argv):
 
 if __name__ == '__main__':
     main(sys.argv[1:])
-

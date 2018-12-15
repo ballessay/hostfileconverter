@@ -24,8 +24,6 @@ import getopt
 # Some input hosts files are a bit too restrictive. So the entries in
 # this list won't be included in the output file
 _url_filter = [
-    "no-ip.com",
-    "www.no-ip.com",
     "blogspot.com"
 ]
 
